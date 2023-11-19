@@ -5268,6 +5268,7 @@ GameObject:
   - component: {fileID: 319723260}
   - component: {fileID: 319723259}
   - component: {fileID: 319723258}
+  - component: {fileID: 319723261}
   m_Layer: 0
   m_Name: "\u539F\u4F4F\u6C11"
   m_TagString: Untagged
@@ -5363,6 +5364,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &319723261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319723257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 335ca44475abc37429e7fdf8904d607e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2.5
+  limitLeft: -4.5
+  limitRight: 4.5
 --- !u!1 &380920892
 GameObject:
   m_ObjectHideFlags: 0
@@ -5744,7 +5760,7 @@ MonoBehaviour:
   storyText: {fileID: 1670071008}
   storyTextGO: {fileID: 0}
   characterImage: {fileID: 380920895}
-  fitTextWithImage: 1
+  fitTextWithImage: 0
   closeOtherDialogs: 0
 --- !u!114 &680434032
 MonoBehaviour:
@@ -7365,7 +7381,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 50
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
