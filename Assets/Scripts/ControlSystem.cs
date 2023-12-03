@@ -47,14 +47,11 @@ namespace Kylin
        */
         private void Update()
         {
-            
-            
+            Move();
+
         }
 
-        private void NewMethod()
-        {
-            Move();
-        }
+       
         /// <summary>
         /// 移動方法:偵測玩家的輸入並控制角色移動以及範圍限制
         /// </summary>
