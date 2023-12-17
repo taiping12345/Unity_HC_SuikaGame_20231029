@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Fungus;
+using UnityEngine;
 
 namespace Kylin
 
-    
+
 {
     /// <summary>
     /// 生成系統:隨機生成第一顆與下一顆物件
@@ -15,9 +16,9 @@ namespace Kylin
         public GameObject prefabSlimes3;
         public GameObject prefabSlimes4;
         */
-       /// <summary>
-       /// 練習陣列與隨機
-       /// </summary>
+        /// <summary>
+        /// 練習陣列與隨機
+        /// </summary>
         /* private void Awake()
         {
             print(prefabSlimes[4]);
@@ -39,19 +40,68 @@ namespace Kylin
         public GameObject nextSlime;
         [Header("放生成物位置")]
         public Transform spawnPoint;
-        
+        [Header("下一個物件的位置")]
+        public Transform nextPoint;
+        [Header("放下按鍵")]
+        public KeyCode releaseSlimeKey = KeyCode.Space;
+        [Header("延遲將使萊姆移到手上的時間"), Range(0, 2)]
+        public float delayChangeCurrentSlime = 0.5f;
+
+        public bool canReleaseSlime = true;
+
+        private void Update()
+        {
+            releaseSlime();
+        }
         private void Awake()
         {
-            int random = Random.Range(0, prefabSlimes.Length);
-            currentSlime = prefabSlimes[random];
+            currentSlime = RandomSlime();
+            nextSlime = RandomSlime();
 
-            int randomNext = Random.Range(0,prefabSlimes.Length);
-            nextSlime = prefabSlimes[randomNext];
+            currentSlime = Instantiate(currentSlime, spawnPoint.position, Quaternion.identity, spawnPoint);
+
+            nextSlime = Instantiate(nextSlime, nextPoint.position, Quaternion.identity, nextPoint);
 
 
         }
+
+        private void releaseSlime()
+        {
+            bool slimeKey = Input.GetKeyUp(releaseSlimeKey);
+            print($"<color=#f89>玩家沒有按下按鍵:{slimeKey}<color>");
+
+            if (slimeKey && canReleaseSlime)
+            {
+                currentSlime.GetComponent<Rigidbody2D>().gravityScale = 1;
+
+                canReleaseSlime = false;
+                currentSlime.transform.SetParent(null);
+                SwitchCurrentAndNext();
+            }
+        }
+        private GameObject RandomSlime()
+        {
+            int random = Random.Range(0, prefabSlimes.Length);
+            return prefabSlimes[random];
+        }
+        private void SwitchCurrentAndNext()
+        {
+            currentSlime = nextSlime;
+            nextSlime = RandomSlime();
+
+            Invoke("DelayChangeCurrentSlime", delayChangeCurrentSlime);
+        }
+        private void DelayChangeCurrentSlime()
+        {
+            currentSlime.transform.SetParent(spawnPoint);
+            currentSlime.transform.localPosition = Vector3.zero;
+
+            nextSlime = Instantiate(nextSlime, nextPoint.position, Quaternion.identity, nextPoint);
+
+            canReleaseSlime = true;
+        }
     }
-    
-    
+
+
 
 }
