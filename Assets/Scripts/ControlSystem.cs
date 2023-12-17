@@ -1,4 +1,5 @@
-﻿using UnityEngine;      //引用unity函式庫
+﻿using UnityEditor.Tilemaps;
+using UnityEngine;      //引用unity函式庫
 namespace Kylin
 {
     /// <summary>
@@ -36,9 +37,11 @@ namespace Kylin
         public float limitLeft = -4.5f;
         [Header("左邊界"),Tooltip ("角色移動左邊界")]
         public float limitRight = 4.5f;
-
-        [Header("動畫控制元件"), SerializeField]
+        [Header("圖片渲染元件"), SerializeField]
+       
         private Animator ani;
+        [Header("動畫控制元件"), SerializeField]
+        private SpriteRenderer sprite;
 
         private string parMove = "移動畫面";
         /* private void Awake()
@@ -53,7 +56,7 @@ namespace Kylin
         {
             Move();
             UpdateAnimation();
-
+            Flip();
         }
 
        public float inputHorizontal
@@ -90,6 +93,13 @@ namespace Kylin
             float hAbs = Mathf.Abs(inputHorizontal);
 
             ani.SetFloat(parMove, hAbs);
+        }
+        private void Flip()
+        {
+            if (Mathf.Abs(inputHorizontal) < 0.1f) return;
+
+            sprite.flipX = inputHorizontal < 0;
+
         }
     }
 }

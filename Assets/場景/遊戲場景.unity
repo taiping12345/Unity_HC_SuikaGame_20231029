@@ -5381,6 +5381,7 @@ MonoBehaviour:
   limitLeft: -4.5
   limitRight: 4.5
   ani: {fileID: 319723258}
+  sprite: {fileID: 319723259}
 --- !u!1 &380920892
 GameObject:
   m_ObjectHideFlags: 0
