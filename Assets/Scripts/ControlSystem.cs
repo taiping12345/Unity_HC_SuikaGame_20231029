@@ -56,7 +56,8 @@ namespace Kylin
         {
             Move();
             UpdateAnimation();
-            Flip();
+            //Flip();
+            FlipAngle();
         }
 
        public float inputHorizontal
@@ -79,7 +80,7 @@ namespace Kylin
 
             //print(transform.position);
 
-            transform.Translate(inputHorizontal * Time.deltaTime * moveSpeed, 0, 0);
+            transform.Translate(inputHorizontal * Time.deltaTime * moveSpeed, 0, 0,Space.World);
 
             Vector3 point = transform.position;
 
@@ -100,6 +101,16 @@ namespace Kylin
 
             sprite.flipX = inputHorizontal < 0;
 
+        }
+        private void FlipAngle()
+        {
+            if (Mathf.Abs(inputHorizontal) < 0.1f) return;
+
+            Vector3 angle = Vector3.zero;
+
+            angle.y = inputHorizontal > 0 ? 0 : 180;
+
+            transform.eulerAngles = angle;
         }
     }
 }
