@@ -5380,6 +5380,7 @@ MonoBehaviour:
   moveSpeed: 2.5
   limitLeft: -4.5
   limitRight: 4.5
+  ani: {fileID: 319723258}
 --- !u!1 &380920892
 GameObject:
   m_ObjectHideFlags: 0
@@ -5606,6 +5607,7 @@ MonoBehaviour:
   nextPoint: {fileID: 1265620102}
   releaseSlimeKey: 32
   delayChangeCurrentSlime: 0.8
+  canReleaseSlime: 1
 --- !u!4 &578910424
 Transform:
   m_ObjectHideFlags: 0
@@ -6897,7 +6899,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 96.53003, y: 148.28}
+  m_AnchoredPosition: {x: 96.04001, y: 148.28}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1279491828

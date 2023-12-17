@@ -37,14 +37,18 @@ namespace Kylin
         [Header("左邊界"),Tooltip ("角色移動左邊界")]
         public float limitRight = 4.5f;
 
-       /* private void Awake()
-        {
-            print(6666);
-            print("hello world");
-            print(moveSpeed);
-            print("<Color=red>紅色文字</Color>");
-        }
-       */
+        [Header("動畫控制元件"), SerializeField]
+        private Animator ani;
+
+        private string parMove = "移動畫面";
+        /* private void Awake()
+         {
+             print(6666);
+             print("hello world");
+             print(moveSpeed);
+             print("<Color=red>紅色文字</Color>");
+         }
+        */
         private void Update()
         {
             Move();

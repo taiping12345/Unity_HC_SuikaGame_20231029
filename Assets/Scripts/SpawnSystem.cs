@@ -46,6 +46,7 @@ namespace Kylin
         public KeyCode releaseSlimeKey = KeyCode.Space;
         [Header("延遲將使萊姆移到手上的時間"), Range(0, 2)]
         public float delayChangeCurrentSlime = 0.5f;
+        
 
         public bool canReleaseSlime = true;
 
