@@ -52,10 +52,18 @@ namespace Kylin
         private void Update()
         {
             Move();
+            UpdateAnimation();
 
         }
 
-       
+       public float inputHorizontal
+        {
+            get
+            {
+                return Input.GetAxis("Horizontal");
+            }
+        }
+        
         /// <summary>
         /// 移動方法:偵測玩家的輸入並控制角色移動以及範圍限制
         /// </summary>
@@ -68,7 +76,7 @@ namespace Kylin
 
             //print(transform.position);
 
-            transform.Translate(h * Time.deltaTime * moveSpeed, 0, 0);
+            transform.Translate(inputHorizontal * Time.deltaTime * moveSpeed, 0, 0);
 
             Vector3 point = transform.position;
 
@@ -76,6 +84,12 @@ namespace Kylin
 
 
             transform.position = point;
+        }
+        private void UpdateAnimation()
+        {
+            float hAbs = Mathf.Abs(inputHorizontal);
+
+            ani.SetFloat(parMove, hAbs);
         }
     }
 }
