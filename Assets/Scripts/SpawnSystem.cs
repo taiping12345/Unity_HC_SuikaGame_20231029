@@ -1,4 +1,5 @@
 ﻿using Fungus;
+using k;
 using UnityEngine;
 
 namespace Kylin
@@ -73,7 +74,11 @@ namespace Kylin
 
             if (slimeKey && canReleaseSlime)
             {
+                currentSlime.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                
                 currentSlime.GetComponent<Rigidbody2D>().gravityScale = 1;
+                
+                currentSlime.GetComponent<Collider2D>().enabled = true;
 
                 canReleaseSlime = false;
                 currentSlime.transform.SetParent(null);
@@ -82,7 +87,7 @@ namespace Kylin
         }
         private GameObject RandomSlime()
         {
-            int random = Random.Range(0, prefabSlimes.Length);
+            int random = Random.Range(0, scoreManager.instance.maxSlimeIndex);
             return prefabSlimes[random];
         }
         private void SwitchCurrentAndNext()

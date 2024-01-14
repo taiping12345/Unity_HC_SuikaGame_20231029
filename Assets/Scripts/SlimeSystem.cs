@@ -19,6 +19,10 @@ namespace k
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
+
+            if (index == 8) return;
+
+
             print($"<color=#f69>碰到的物件){collision.gameObject.name}</Color>");
 
             if(collision.gameObject.name == gameObject.name)
@@ -32,7 +36,7 @@ namespace k
 
                 Vector2 result = Vector2.Lerp(pointA, ponintB, 0.5f);
 
-                MergeSystem.instance.Merge(index + 1);
+                MergeSystem.instance.Merge(index + 1,result);
 
                 Destroy(gameObject);
 
