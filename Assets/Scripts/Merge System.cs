@@ -9,6 +9,8 @@ namespace K
 
 
         public static MergeSystem instance;
+        private bool canMerge = true;
+
         private void Awake()
         {
             instance = this;
@@ -16,9 +18,14 @@ namespace K
         }
         public void Merge(int _index)
         {
-            print("<color=#99f>合成</color>");
-            Instantiate(prefabSlimes[_index], Vector3.zero, Quaternion.identity);
+            if (canMerge)
+            {
+                canMerge = false;
+                print("<color=#99f>合成</color>");
+                Instantiate(prefabSlimes[_index], Vector3.zero, Quaternion.identity);
 
+            }
+            
         }
     }
 }
