@@ -1,5 +1,4 @@
-﻿using UnityEditor.Tilemaps;
-using UnityEngine;      //引用unity函式庫
+﻿using UnityEngine;      //引用unity函式庫
 namespace Kylin
 {
     /// <summary>
