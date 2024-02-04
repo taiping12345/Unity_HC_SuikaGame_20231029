@@ -20,6 +20,8 @@ namespace k
         private void OnCollisionEnter2D(Collision2D collision)
         {
 
+            tag = "±¼¤U¥hªº¥vµÜ©i";
+
             if (index == 8) return;
 
 

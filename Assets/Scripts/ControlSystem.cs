@@ -89,6 +89,12 @@ namespace Kylin
 
             transform.position = point;
         }
+
+        private void OnDisable()
+        {
+            ani.SetFloat(parMove, 0);
+        }
+
         private void UpdateAnimation()
         {
             float hAbs = Mathf.Abs(inputHorizontal);

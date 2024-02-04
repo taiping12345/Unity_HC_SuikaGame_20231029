@@ -13,14 +13,17 @@ namespace K
         private ControlSystem ControlSystem;
         [SerializeField, Header("生成系統")]
         private SpawnSystem spawnSystem;
+        [SerializeField, Header("遊戲結束音效")]
+        private AudioClip soundGameover;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
             print($"<color=#f69>碰到的物件 : {collision.name}</color>");
-            StartCoroutine(FadeIn());
+            if(collision.tag == "掉下去的史萊姆")StartCoroutine(FadeIn());
         }
         private IEnumerator FadeIn()
         {
+            SoundManager.instance.PlaySound(soundGameover);
             ControlSystem.enabled = false;
             spawnSystem.enabled = false;
             for (int i = 0; i < 10; i++)

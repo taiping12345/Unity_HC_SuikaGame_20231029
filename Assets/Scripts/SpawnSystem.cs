@@ -1,15 +1,17 @@
 ﻿using Fungus;
 using k;
+using K;
 using UnityEngine;
 
 namespace Kylin
 
 
 {
+    
     /// <summary>
     /// 生成系統:隨機生成第一顆與下一顆物件
     /// </summary>
-
+    [DefaultExecutionOrder(100)]
     public class SpawnSystem : MonoBehaviour
     {
         /*public GameObject prefabSlimes1;
@@ -47,8 +49,8 @@ namespace Kylin
         public KeyCode releaseSlimeKey = KeyCode.Space;
         [Header("延遲將使萊姆移到手上的時間"), Range(0, 2)]
         public float delayChangeCurrentSlime = 0.5f;
-        
-
+        [SerializeField, Header("放東西音效")]
+        private AudioClip soundDrop;
         public bool canReleaseSlime = true;
 
         private void Update()
@@ -83,6 +85,8 @@ namespace Kylin
                 canReleaseSlime = false;
                 currentSlime.transform.SetParent(null);
                 SwitchCurrentAndNext();
+                SoundManager.instance.PlaySound(soundDrop);
+
             }
         }
         private GameObject RandomSlime()

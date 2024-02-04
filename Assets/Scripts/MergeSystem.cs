@@ -8,6 +8,8 @@ namespace K
     {
         [Header("所有史萊姆預製物")]
         public GameObject[] prefabSlimes;
+        [SerializeField, Header("合成音效")]
+        private AudioClip soundMerge;
 
 
         public static MergeSystem instance;
@@ -35,7 +37,8 @@ namespace K
                 Invoke("CanMerge", 0.001f);
 
                 scoreManager.instance.AddScore(_index);
-                
+
+                SoundManager.instance.PlaySound(soundMerge);
             }
         
         }
