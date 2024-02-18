@@ -16,13 +16,18 @@ namespace K
         [SerializeField, Header("遊戲結束音效")]
         private AudioClip soundGameover;
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        private bool isGameOver;
+
+        private void OnTriggerStay2D(Collider2D collision)
         {
             print($"<color=#f69>碰到的物件 : {collision.name}</color>");
-            if(collision.tag == "掉下去的史萊姆")StartCoroutine(FadeIn());
+            if(!isGameOver && collision.tag == "掉下去的史萊姆")StartCoroutine(FadeIn());
         }
         private IEnumerator FadeIn()
         {
+
+            isGameOver = true;
+            
             SoundManager.instance.PlaySound(soundGameover);
             ControlSystem.enabled = false;
             spawnSystem.enabled = false;

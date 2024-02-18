@@ -1,5 +1,4 @@
 using k;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 namespace K
 {
@@ -10,7 +9,8 @@ namespace K
         public GameObject[] prefabSlimes;
         [SerializeField, Header("合成音效")]
         private AudioClip soundMerge;
-
+        [SerializeField, Header("合成特效")]
+        private GameObject objectMergeEffect;
 
         public static MergeSystem instance;
         private bool canMerge = true;
@@ -25,10 +25,14 @@ namespace K
             if (canMerge)
             {
                 canMerge = false;
-                GameObject tempslimes = Instantiate(prefabSlimes[_index],_point, Quaternion.identity);
+                GameObject tempslimes = Instantiate(prefabSlimes[_index],_point+ new Vector2(0, 0.5f), Quaternion.identity);
 
                 print("<color=#99f>合成</color>");
-                
+
+                GameObject tempMergeEffect = Instantiate(objectMergeEffect, _point, Quaternion.identity);
+
+                Destroy(tempMergeEffect, 0.5f);
+
                 tempslimes.GetComponent<Rigidbody2D>().gravityScale = 1;
                 
                 tempslimes.GetComponent<Collider2D>().enabled = true;
